@@ -9,13 +9,23 @@ document.querySelector('.check').addEventListener('click', () => {
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = ' Correct number';
   } else if (guess > secretNumber) {
-    score--;
-    document.querySelector('.score').textContent = score;
-    document.querySelector('.message').textContent = ' 📈 Too High!';
+    if (score > 1) {
+      score--;
+      document.querySelector('.score').textContent = score;
+      document.querySelector('.message').textContent = ' 📈 Too High!';
+    } else {
+      document.querySelector('.score').textContent = '😔';
+      document.querySelector('.message').textContent = 'You lost the game';
+    }
   } else if (guess < secretNumber) {
-    score--;
-    document.querySelector('.score').textContent = score;
-    document.querySelector('.message').textContent = ' 📉 Too Low!';
+    if (score > 1) {
+      score--;
+      document.querySelector('.score').textContent = score;
+      document.querySelector('.message').textContent = ' 📉 Too Low!';
+    } else {
+      document.querySelector('.score').textContent = '😔';
+      document.querySelector('.message').textContent = 'You lost the game';
+    }
   }
 
   console.log();
